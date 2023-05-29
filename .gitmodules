@@ -1,0 +1,3 @@
+[submodule "verilog/rtl/knight"]
+	path = verilog/rtl/knight
+	url = https://github.com/leviathanch/KnightMCU.git
