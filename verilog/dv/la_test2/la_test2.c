@@ -44,7 +44,7 @@ void main()
 
 
 	// All GPIO pins are configured to be output
-	// Used to flad the start/end of a test 
+	// Used to flag the start/end of a test
 
         reg_mprj_io_31 = GPIO_MODE_MGMT_STD_OUTPUT;
         reg_mprj_io_30 = GPIO_MODE_MGMT_STD_OUTPUT;
