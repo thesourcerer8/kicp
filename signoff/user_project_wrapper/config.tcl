@@ -314,7 +314,7 @@ set ::env(USE_GPIO_PADS) {0}
 set ::env(VDD_NETS) {vccd1 vccd2 vdda1 vdda2}
 set ::env(VDD_PIN) {VPWR}
 set ::env(VDD_PIN_VOLTAGE) {1.80}
-set ::env(VERILOG_FILES) {/home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/defines.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_project_wrapper.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_proj_example.v}
+set ::env(VERILOG_FILES) {/home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/defines.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_project_wrapper.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_proj.v}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
 set ::env(cts_logs) {/home/passant/caravel_user_project/openlane/user_project_wrapper/runs/23_02_16_15_02/logs/cts}
@@ -745,7 +745,7 @@ set ::env(VDD_NET) {vccd1}
 set ::env(VDD_NETS) {vccd1 vccd2 vdda1 vdda2}
 set ::env(VDD_PIN) {vccd1}
 set ::env(VDD_PIN_VOLTAGE) {1.80}
-set ::env(VERILOG_FILES) {/home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/defines.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_project_wrapper.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_proj_example.v}
+set ::env(VERILOG_FILES) {/home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/defines.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_project_wrapper.v /home/passant/caravel_user_project/openlane/user_project_wrapper/../../verilog/rtl/user_proj.v}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
 set ::env(_) {/openlane/flow.tcl}

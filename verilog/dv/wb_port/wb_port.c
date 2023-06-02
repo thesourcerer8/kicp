@@ -19,7 +19,8 @@
 #include <defs.h>
 #include <stub.c>
 
-#define MEM_SIZE (1<<4)
+//#define MEM_SIZE (1<<4)
+#define MEM_SIZE (1<<8)
 
 #define WB_BASE 0x32000000
 //#define WB_BASE 0x30100000
@@ -37,23 +38,25 @@
 #define kiop_height_b (*(CTRL_ADDR+4)) // height of matrix B
 #define kiop_status (*(CTRL_ADDR+5)) // write -1 to start, check later for error codes
 
-// Matrix A values
-#define matrix_a0 (*(CTRL_ADDR+6))
-#define matrix_a1 (*(CTRL_ADDR+7))
-#define matrix_a2 (*(CTRL_ADDR+8))
-#define matrix_a3 (*(CTRL_ADDR+9))
+#define matrix0 (*(CTRL_ADDR+6))
+#define matrix1 (*(CTRL_ADDR+7))
+#define matrix2 (*(CTRL_ADDR+8))
+#define matrix3 (*(CTRL_ADDR+9))
 
-// Matrix B values
-#define matrix_b0 (*(CTRL_ADDR+10))
-#define matrix_b1 (*(CTRL_ADDR+11))
-#define matrix_b2 (*(CTRL_ADDR+12))
-#define matrix_b3 (*(CTRL_ADDR+13))
+#define matrix4 (*(CTRL_ADDR+10))
+#define matrix5 (*(CTRL_ADDR+11))
+#define matrix6 (*(CTRL_ADDR+12))
+#define matrix7 (*(CTRL_ADDR+13))
+#define matrix8 (*(CTRL_ADDR+14))
+#define matrix9 (*(CTRL_ADDR+15))
 
-// Matrix C values
-#define matrix_c0 (*(CTRL_ADDR+2*(MEM_SIZE*MEM_SIZE)+6+0))
-#define matrix_c1 (*(CTRL_ADDR+2*(MEM_SIZE*MEM_SIZE)+6+1))
-#define matrix_c2 (*(CTRL_ADDR+2*(MEM_SIZE*MEM_SIZE)+6+2))
-#define matrix_c3 (*(CTRL_ADDR+2*(MEM_SIZE*MEM_SIZE)+6+3))
+#define matrix10 (*(CTRL_ADDR+16))
+#define matrix11 (*(CTRL_ADDR+17))
+#define matrix12 (*(CTRL_ADDR+18))
+#define matrix13 (*(CTRL_ADDR+19))
+#define matrix14 (*(CTRL_ADDR+20))
+#define matrix15 (*(CTRL_ADDR+21))
+#define matrix16 (*(CTRL_ADDR+22))
 
 /*
   Wishbone Test:
@@ -130,49 +133,97 @@ void main()
     Correct!
     */
 
-    // Matrix A
-    matrix_a0 = -3;
-    matrix_a1 = -15;
-    matrix_a2 = -6;
-    matrix_a3 = 7;
+    // test square
 
-    // Matrix B
-    matrix_b0 = 9;
-    matrix_b1 = -15;
-    matrix_b2 = -2;
-    matrix_b3 = -5;
+#if 0
+    // Matrix A 2x2
+    matrix0 = -3;
+    matrix1 = -15;
+    matrix2 = -6;
+    matrix3 = 7;
+
+    // Matrix B 2x2
+    matrix4 = 9;
+    matrix5 = -15;
+    matrix6 = -2;
+    matrix7 = -5;
 
     kiop_operation = 1;
+    // A 2 x 2
     kiop_width_a = 2;
     kiop_height_a = 2;
+    // B 2 x 2
     kiop_width_b = 2;
     kiop_height_b = 2;
+#endif
+
+    // test non square
+    /*
+     * -3 * -12 +  -15 * -6 = 126
+     * 
+     * 
+     */
+
+#if 0
+   /*  
+   Matrix A 3x2
+   -3 -15 -7
+    8 -15 -5
+
+   Matrix B 2x3
+   -12  13
+    -6  5
+     7  12
+   */
+    // A 3 x 2
+    kiop_width_a = 3;
+    kiop_height_a = 2;
+    // B 2 x 3
+    kiop_width_b = 2;
+    kiop_height_b = 3;
+#endif
+   /*  
+    Matrix A 2x3
+    -3 -15
+    -7   8
+    -15 -5
+
+   Matrix B 3x2
+   -12 -13  -6
+     5   7  12
+   */
+
+    // Matrix A
+    matrix0 = -3;
+    matrix1 = -15;
+    matrix2 = -7;
+    matrix3 = 8;
+    matrix4 = -15;
+    matrix5 = -5;
+
+    // Matrix B
+    matrix6 =  -12;
+    matrix7 =  -13;
+    matrix8 =  -6;
+    matrix9 =  5;
+    matrix10 =  7;
+    matrix11 =  12;
+
+    kiop_operation = 1; // set config registers r/w
+    // A 3 x 2
+    kiop_width_a = 2;
+    kiop_height_a = 3;
+    // B 2 x 3
+    kiop_width_b = 3;
+    kiop_height_b = 2;
+
     kiop_status = -1; // shoot and go
 
-    reg_mprj_datal = matrix_c0;
-    reg_mprj_datal = matrix_c1;
-    reg_mprj_datal = matrix_c2;
-    reg_mprj_datal = matrix_c3;
-
-    /*
-    // Matrix B
-    INPUT_DEST(10) = 9;
-    INPUT_DEST(11) = -15;
-    INPUT_DEST(12) = -2;
-    INPUT_DEST(13) = -5;
-
-    // Op and dimensions
-    INPUT_DEST(0) = 1;
-    INPUT_DEST(1) = 2;
-    INPUT_DEST(2) = 2;
-    INPUT_DEST(3) = 2;
-    INPUT_DEST(4) = 2;
-    INPUT_DEST(5) = -1; // shoot and go
-
-    buf = OUTPUT_DEST(0);
-    buf = OUTPUT_DEST(1);
-    buf = OUTPUT_DEST(2);
-    buf = OUTPUT_DEST(3);*/
+    reg_mprj_datal = matrix12;
+    reg_mprj_datal = matrix13;
+    reg_mprj_datal = matrix14;
+    reg_mprj_datal = matrix15;
+    reg_mprj_datal = matrix16;
 
     reg_mprj_datal = 0xAB610000;
 

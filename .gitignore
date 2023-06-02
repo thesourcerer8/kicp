@@ -1,3 +1,7 @@
+caravel
+dependencies
+mgmt_core_wrapper
+venv
 /.idea/
 /precheck_results/
 */tmp
