@@ -20,7 +20,8 @@
 #include <stub.c>
 
 //#define MEM_SIZE (1<<4)
-#define MEM_SIZE (1<<8)
+#define MEM_SIZE (1<<5)
+//#define MEM_SIZE (1<<8)
 
 #define WB_BASE 0x32000000
 //#define WB_BASE 0x30100000
@@ -57,6 +58,36 @@
 #define matrix14 (*(CTRL_ADDR+20))
 #define matrix15 (*(CTRL_ADDR+21))
 #define matrix16 (*(CTRL_ADDR+22))
+#define matrix17 (*(CTRL_ADDR+23))
+#define matrix18 (*(CTRL_ADDR+24))
+#define matrix19 (*(CTRL_ADDR+25))
+
+#define matrix20 (*(CTRL_ADDR+26))
+#define matrix21 (*(CTRL_ADDR+27))
+#define matrix22 (*(CTRL_ADDR+28))
+#define matrix23 (*(CTRL_ADDR+29))
+#define matrix24 (*(CTRL_ADDR+30))
+#define matrix25 (*(CTRL_ADDR+31))
+#define matrix26 (*(CTRL_ADDR+32))
+#define matrix27 (*(CTRL_ADDR+33))
+#define matrix28 (*(CTRL_ADDR+34))
+#define matrix29 (*(CTRL_ADDR+35))
+
+#define matrix30 (*(CTRL_ADDR+36))
+#define matrix31 (*(CTRL_ADDR+37))
+#define matrix32 (*(CTRL_ADDR+38))
+#define matrix33 (*(CTRL_ADDR+39))
+#define matrix34 (*(CTRL_ADDR+40))
+#define matrix35 (*(CTRL_ADDR+41))
+#define matrix36 (*(CTRL_ADDR+42))
+#define matrix37 (*(CTRL_ADDR+43))
+#define matrix38 (*(CTRL_ADDR+44))
+#define matrix39 (*(CTRL_ADDR+45))
+
+#define matrix40 (*(CTRL_ADDR+46))
+#define matrix41 (*(CTRL_ADDR+47))
+#define matrix42 (*(CTRL_ADDR+48))
+
 
 /*
   Wishbone Test:
@@ -193,6 +224,7 @@ void main()
      5   7  12
    */
 
+#if 0
     // Matrix A
     matrix0 = -3;
     matrix1 = -15;
@@ -209,7 +241,7 @@ void main()
     matrix10 =  7;
     matrix11 =  12;
 
-    kiop_operation = 1; // set config registers r/w
+    kiop_operation = 1; // set one for multiplication
     // A 3 x 2
     kiop_width_a = 2;
     kiop_height_a = 3;
@@ -218,12 +250,79 @@ void main()
     kiop_height_b = 2;
 
     kiop_status = -1; // shoot and go
+#endif
 
-    reg_mprj_datal = matrix12;
-    reg_mprj_datal = matrix13;
-    reg_mprj_datal = matrix14;
-    reg_mprj_datal = matrix15;
-    reg_mprj_datal = matrix16;
+    // Matrix A 5x5
+    matrix0 = 42;
+    matrix1 = 2;
+    matrix2 = 3;
+    matrix3 = 4;
+    matrix4 = 5;
+
+    matrix5 = 6;
+    matrix6 = 7;
+    matrix7 = 8;
+    matrix8 = 9;
+    matrix9 = 10;
+
+    matrix10 = 11;
+    matrix11 = 12;
+    matrix12 = 13;
+    matrix13 = 14;
+    matrix14 = 15;
+
+    matrix15 = 16;
+    matrix16 = 17;
+    matrix17 = 18;
+    matrix18 = 19;
+    matrix19 = 20;
+    
+    matrix20 = 21;
+    matrix21 = 22;
+    matrix22 = 23;
+    matrix23 = 24;
+    matrix24 = 23;
+
+    // Filter F 3x3
+    matrix25 = 1;
+    matrix26 = 1;
+    matrix27 = 1;
+
+    matrix28 = 0;
+    matrix29 = 0;
+    matrix30 = 0;
+
+    matrix31 = -1;
+    matrix32 = -1;
+    matrix33 = -1;
+
+    kiop_operation = 2; // Set 2 for selecting convolution
+    // A 3 x 2
+    kiop_width_a = 5;
+    kiop_height_a = 5;
+    // B 2 x 3
+    kiop_width_b = 3;
+    kiop_height_b = 3;
+
+    kiop_status = -1; // shoot and go
+
+    reg_mprj_datal = matrix34;
+    reg_mprj_datal = matrix35;
+    reg_mprj_datal = matrix36;
+
+    reg_mprj_datal = matrix37;
+    reg_mprj_datal = matrix38;
+    reg_mprj_datal = matrix39;
+
+    reg_mprj_datal = matrix40;
+    reg_mprj_datal = matrix41;
+    reg_mprj_datal = matrix42;
+
+    /*
+    11 -30 -30
+   -30 -30 -30
+   -30 -30 -28
+   */
 
     reg_mprj_datal = 0xAB610000;
 
