@@ -89,6 +89,7 @@ jobs:
 
       - name: Harden using Openlane
         run: |
+          git clone https://github.com/leviathanch/KnightMCU.git /home/runner/work/kicp/kicp/KnightMCU
           make user_proj
           make user_project_wrapper
 
@@ -179,6 +180,7 @@ jobs:
 
       - name: Harden using Openlane
         run: |
+          git clone https://github.com/leviathanch/KnightMCU.git /home/runner/work/kicp/kicp/KnightMCU
           make user_proj
           make user_project_wrapper
 
