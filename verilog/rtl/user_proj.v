@@ -91,7 +91,15 @@ module user_proj (
         .wb_data_i(wbs_dat_i),
         .wb_data_o(wbs_dat_o),
         .wb_ack(wbs_ack_o),
-        .wb_stb(wbs_stb_i)
+        .wb_stb(wbs_stb_i),
+        // Logic Analyzer Signals
+        .la_data_in(la_data_in),
+        .la_data_out(la_data_out),
+        .la_oenb(la_oenb),
+        // IOs
+        .io_in(io_in),
+        .io_out(io_out),
+        .io_oeb(io_oeb)
     );
 
 endmodule

@@ -28,7 +28,7 @@ It takes in two matrices A and B, multiplies them and spits out the matrix C
 
 ## Matrix convolution
 
-WIP... maybe I still manage, but people need sleep...
+Takes in a matrix A and a filter and spits out a convoluted matrix with dimensions wA - hF + 1 x hA - hF +1
 
 
 Refer to [README](docs/source/index.rst#section-quickstart) for a quickstart of how to use caravel_user_project
