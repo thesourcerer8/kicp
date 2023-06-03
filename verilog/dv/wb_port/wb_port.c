@@ -19,25 +19,16 @@
 #include <defs.h>
 #include <stub.c>
 
-//#define MEM_SIZE (1<<4)
-#define MEM_SIZE (1<<5)
-//#define MEM_SIZE (1<<8)
-
 #define WB_BASE 0x32000000
-//#define WB_BASE 0x30100000
-//#define WB_BASE 0x30000000
-
 #define CTRL_ADDR ((volatile uint32_t*)WB_BASE)
-#define MATRIX_ADDR ((volatile uint32_t*)(WB_BASE+6))
-#define RESULT_ADDR ((volatile uint32_t*)(WB_BASE+2*(MEM_SIZE*MEM_SIZE)+6))
 
 // Knight Co Processor registers
 #define kiop_operation (*(CTRL_ADDR+0)) // what to do? (multiplication: 1, ...)
-#define kiop_width_a (*(CTRL_ADDR+1)) // width of matrix A
-#define kiop_height_a (*(CTRL_ADDR+2)) // height of matrix A
-#define kiop_width_b (*(CTRL_ADDR+3)) // width of matrix B
-#define kiop_height_b (*(CTRL_ADDR+4)) // height of matrix B
-#define kiop_status (*(CTRL_ADDR+5)) // write -1 to start, check later for error codes
+#define kiop_status (*(CTRL_ADDR+1)) // write -1 to start, check later for error codes
+#define kiop_width_a (*(CTRL_ADDR+2)) // width of matrix A
+#define kiop_height_a (*(CTRL_ADDR+3)) // height of matrix A
+#define kiop_width_b (*(CTRL_ADDR+4)) // width of matrix B
+#define kiop_height_b (*(CTRL_ADDR+5)) // height of matrix B
 
 #define matrix0 (*(CTRL_ADDR+6))
 #define matrix1 (*(CTRL_ADDR+7))
@@ -165,7 +156,6 @@ void main()
     */
 
     // test square
-
 #if 0
     // Matrix A 2x2
     matrix0 = -3;
@@ -186,6 +176,13 @@ void main()
     // B 2 x 2
     kiop_width_b = 2;
     kiop_height_b = 2;
+
+    kiop_status = -1; // shoot and go
+
+    reg_mprj_datal = matrix8;
+    reg_mprj_datal = matrix9;
+    reg_mprj_datal = matrix10;
+    reg_mprj_datal = matrix11
 #endif
 
     // test non square
@@ -324,6 +321,7 @@ void main()
    -30 -30 -28
    */
 
-    reg_mprj_datal = 0xAB610000;
+
+    reg_mprj_datal = 0xAB610000; // exit
 
 }

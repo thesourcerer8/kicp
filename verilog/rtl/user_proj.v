@@ -40,7 +40,6 @@ module user_proj (
     inout vccd1,	// User area 1 1.8V supply
     inout vssd1,	// User area 1 digital ground
 `endif
-
     // Wishbone Slave ports (WB MI A)
     input wire wb_clk_i,
     input wire wb_rst_i,
@@ -79,6 +78,10 @@ module user_proj (
 
     // Instantiate the DUT
     AI_Accelerator_Top #(32'h3200_0000) dut (
+`ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V supply
+        .vssd1(vssd1),	// User area 1 digital ground
+`endif
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
         .wb_cyc_i(wbs_cyc_i),
