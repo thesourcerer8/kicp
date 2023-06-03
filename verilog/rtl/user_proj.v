@@ -65,16 +65,8 @@ module user_proj (
     // IRQ
     output wire [2:0] irq
 );
-    assign io_oeb = {(15){wb_rst_i}};
-
     // IRQ
     assign irq = 3'b000;	// Unused
-
-    // Logic analyzer maybe later
-    assign la_data_out = 128'b0;
-
-    // No I/O. It's an accelertor
-    assign io_out = 16'b0;
 
     // Instantiate the DUT
     AI_Accelerator_Top #(32'h3200_0000) dut (
