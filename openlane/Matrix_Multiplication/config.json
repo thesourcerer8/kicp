@@ -3,7 +3,7 @@
     "DESIGN_IS_CORE": 0,
     "VERILOG_FILES": [
         "dir::../../KnightMCU/verilog/src/mine/constants.v",
-        "dir::../../KnightMCU/verilog/src/chatgpt/Matrix_Multiplication.v",
+        "dir::../../KnightMCU/verilog/src/chatgpt/Matrix_Multiplication.v"
     ],
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "clk",
